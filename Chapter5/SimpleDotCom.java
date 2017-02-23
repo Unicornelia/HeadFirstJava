@@ -1,42 +1,28 @@
 class SimpleDotCom {
 
-  int guess = Integer.parseInt(String stringGuess);
-  // convert the string to an integer
-
-  String result = "miss";
-  // make a variable to hold the result we will return
-
-  for (int cell : locationCells) {
-    // repeat with each cell in the locationcell array
-    if (guess == cell) {
-      // compare the user guess to the element in the array
-      result  = "hit";
-      numOfHits++;
-      // we got a hit, increment the numbers
-      break;
-      //get out of the loop
-    }
-  }
-
-  if (numOfHits == locationCells.length()) {
-    result = "kill";
-  }
-
-  System.out.println(result);
-  //display result for user
-
-  return result;
-  //return the result back to the calling method
-
-
   int[] locationCells;
   int numOfHits = 0;
 
-  String checkYourself(String userGuess) {
+  public void setLocationCells(int[] locs) {
+    locationCells = locs;
   }
 
-  void setLocationCells(int[] cellLocations) {
+  public String checkYourself(String stringGuess) {
+
+    int guess = Integer.parseInt(stringGuess);
+    String result = "miss";
+
+    for (int cell : locationCells) {
+      if (guess == cell) {
+        result  = "hit";
+        numOfHits++;
+        break;
+      }
+    }
+    if (numOfHits == locationCells.length) {
+      result = "kill";
+    }
+    System.out.println(result);
+    return result;
   }
-
-
 }

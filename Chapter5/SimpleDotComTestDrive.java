@@ -1,21 +1,30 @@
 public class SimpleDotComTestDrive {
 
   public static void main (String [] args) {
-    
+
+    int numOfGuesses = 0;
+    //make a variable to track how many guesses the user makes
+
+    GameHelper helper = new GameHelper();
+
     SimpleDotCom dot = new SimpleDotCom();
 
-    int[] locations = {2, 3, 4};
+    int randomNum = (int) (Math.random() * 5);
+
+    int[] locations = {randomNum, randomNum + 1, randomNum + 2};
+
     dot.setLocationCells(locations);
 
-    String userGuess = "2";
+    boolean isAlive = true;
 
-    String result = dot.checkYourself(userGuess);
-
-    String testResult = "failed";
-
-    if (result.equals("hit")) {
-      testResult = "passed";
+    while (isAlive == true) {
+      String guess = helper.getUserInput("enter a number");
+      String result = dot.checkYourself(guess);
+      numOfGuesses++;
+      if (result.equals("kill")) {
+        isAlive = false;
+      }
+      System.out.println("You took " + numOfGuesses + " guesses");
     }
-    System.out.println(testResult);
   }
 }
